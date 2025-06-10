@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prześlij Aktualizację Kampanii</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Styl CSS przeniesiony z Twojego style.css i z poprzednich stron */
+        body {
+            background-color:#1a0f0f;
+            color: #00ff66;
+            font-family: 'Courier New', monospace; /* Fallback */
+            font-family: 'VT323', monospace;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            background-blend-mode: multiply;
+            padding: 0px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Rozciągnij na całą wysokość widoku */
+        }
+        .vt323-regular {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+        nav {
+            background-color: #000000;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 27px;
+        }
+
+        nav a {
+            color: #cc0000;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        main {
+            padding: 40px;
+            max-width: 900px; /* Dopasuj szerokość do formularza */
+            margin: 20px auto; /* Wyśrodkowanie głównej treści */
+            flex-grow: 1; /* Pozwól mainowi rozciągnąć się */
+            display: flex;
+            flex-direction: column;
+            align-items: center; /* Wyśrodkuj zawartość pionowo */
+        }
+
+        h1, h2, h3 {
+            color: #ff6600;
+            text-shadow: 0 0 3px #ff0000;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            text-align: center;
+            color: #444;
+            padding: 20px 0;
+            margin-top: auto; /* Przypnij stopkę do dołu */
+        }
+
+        /* Style dla ramki iframe i wyśrodkowania */
+        .form-container {
+            background-color: #000000; /* Ciemne tło dla kontenera formularza */
+            border: 2px solid #cc0000; /* Czerwona ramka */
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.5); /* Pomarańczowy cień */
+            padding: 15px;
+            width: 100%; /* Rozciągnij na całą dostępną szerokość main */
+            box-sizing: border-box; /* Uwzględnij padding w szerokości */
+        }
+
+        iframe {
+            width: 100%;
+            height: 800px; /* Zmniejszona domyślna wysokość, żeby uniknąć zbyt długiego przewijania */
+            border: none; /* Usuń domyślne obramowanie iframe */
+            background-color: #1a0f0f; /* Upewnij się, że tło iframe pasuje */
+        }
+
+        /* Responsywność dla mniejszych ekranów */
+        @media (max-width: 768px) {
+            main {
+                padding: 20px;
+            }
+            iframe {
+                height: 600px; /* Dalsze zmniejszenie wysokości na małych ekranach */
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="main-quest.html">Main Quest</a>
+        <a href="side-quests.html">Side Quests</a>
+        <a href="diceroll.html">Rzut kośćmi</a>
+        <a href="characters.html">Characters</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="submit-update.html">Submit Update</a>
+    </nav>
+
+    <main>
+        <h1>Prześlij Aktualizację Kampanii</h1>
+
+        <div class="form-container">
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSdMWyZEBrhQHxe0Qaq5UgfNycZGH03MCE3LgzFbFlHdf7ezrw/viewform?embedded=true" title="Formularz Aktualizacji Kampanii">Ładuję…</iframe>
+        </div>
+    </main>
+
+    <footer>
+        Stworzone dla graczy D&D
+    </footer>
+</body>
+</html>
