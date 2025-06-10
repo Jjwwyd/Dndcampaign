@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Siedziba Drużyny D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Globalne style dla tła, tekstu i czcionek - inspirowane DOOM i D&D */
+        body {
+            background-color: #1a0f0f; /* Bardzo ciemny brąz/czerń, podstawa piekła */
+            color: #00ff66; /* Jasnozielony, "terminalowy" kolor tekstu */
+            font-family: 'VT323', monospace; /* Czcionka o wyglądzie retro */
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png'); /* Subtelna tekstura */
+            background-blend-mode: multiply; /* Mieszanie tekstury z kolorem tła */
+            padding: 0px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Rozciągnij stronę na całą wysokość widoku */
+            cursor: url('data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgIAAEBAQACAgoAIiIrACQkLAAhIQ8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAEBQUACQkKAAoKCgAaGhYACQkKAAkJCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKAAkJCQALCwQAAQEGAAkJCQAJCQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEGAAUFBwAGBgsABwcLAAgICQALCwQAAgEFACgoLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACMjLgATEx0ACgoJAAUFBwALCwQACAgIAAgICQAMDA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgIAAoKCgATExwADw8QAAoKCgAMDA0ACgoKAAsLCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFAAYGBwAHBwwADw8QABISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACoqLgAGBgsAAgEFACkpLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACQkLQAiIhYABwcLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICQAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wA'), auto; /* Kursor jak w DOOM */
+        }
+
+        /* Styl dla czcionki VT323 - upewnienie się, że jest zastosowana */
+        .vt323-regular {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+
+        /* Nawigacja - solidna, wyrazista */
+        nav {
+            background-color: #000000; /* Czysta czerń dla kontrastu */
+            text-align: center;
+            padding: 1em 0;
+            font-size: 27px;
+            border-bottom: 3px solid #cc0000; /* Gruba czerwona linia */
+            box-shadow: 0 0 15px rgba(204, 0, 0, 0.7); /* Pulsujący cień */
+        }
+
+        nav a {
+            color: #cc0000; /* Czerwony kolor linków */
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s, text-shadow 0.3s; /* Płynne przejścia */
+            font-weight: bold;
+            font-size: 30px;
+            text-shadow: 0 0 5px rgba(204, 0, 0, 0.5); /* Cień tekstowy dla "żaru" */
+        }
+
+        nav a:hover {
+            color: #ff6600; /* Pomarańczowy po najechaniu - jak lawa */
+            text-shadow: 0 0 10px rgba(255, 102, 0, 0.8), 0 0 20px rgba(255, 102, 0, 0.5);
+        }
+
+        /* Główna sekcja strony */
+        main {
+            padding: 40px;
+            max-width: 900px;
+            margin: 20px auto;
+            flex-grow: 1; /* Pozwala na rozciągnięcie maina */
+            text-align: center;
+        }
+
+        /* Nagłówki - ogniste i wyraźne */
+        h1 {
+            color: #ff6600; /* Pomarańczowy, jak płomienie */
+            text-shadow: 0 0 8px #ff0000, 0 0 15px rgba(255, 102, 0, 0.7); /* Intensywny cień dla efektu blasku */
+            font-size: 4em; /* Duży, dominujący nagłówek */
+            margin-bottom: 30px;
+            text-transform: uppercase; /* Wielkie litery, agresywny wygląd */
+            letter-spacing: 5px; /* Rozstrzelony tekst */
+        }
+
+        /* Przypis - umieszczony w centralnym bloku */
+        .motto-container {
+            background-color: rgba(0, 0, 0, 0.8); /* Półprzezroczyste czarne tło */
+            border: 2px solid #cc0000; /* Czerwona ramka */
+            border-radius: 10px;
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: 0 0 20px rgba(204, 0, 0, 0.7); /* Duży, czerwony cień */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .motto {
+            color: #ff6600; /* Pomarańczowy tekst przypisu */
+            font-size: 1.8em; /* Większy rozmiar czcionki */
+            line-height: 1.5; /* Lepsza czytelność */
+            font-weight: bold;
+            text-shadow: 0 0 5px rgba(255, 102, 0, 0.5);
+            text-transform: uppercase; /* Wielkie litery */
+        }
+
+        /* Dodatkowy obszar na przyszłe elementy - może zawierać obrazki, linki itp. */
+        .future-content-area {
+            background-color: rgba(0, 0, 0, 0.6);
+            border: 1px dashed #00ff66; /* Przerywana zielona ramka */
+            padding: 20px;
+            margin-top: 50px;
+            border-radius: 8px;
+            color: #00ff66;
+            font-style: italic;
+            font-size: 1.1em;
+            text-align: center;
+        }
+
+        /* Stopka - subtelna, ale obecna */
+        footer {
+            text-align: center;
+            color: #444; /* Ciemniejszy kolor */
+            padding: 20px 0;
+            margin-top: auto; /* Przypnij do dołu strony */
+        }
+
+        /* Responsywność dla mniejszych ekranów */
+        @media (max-width: 768px) {
+            nav {
+                font-size: 20px;
+            }
+            nav a {
+                font-size: 22px;
+                margin: 0 8px;
+            }
+            h1 {
+                font-size: 2.5em;
+                letter-spacing: 2px;
+            }
+            .motto {
+                font-size: 1.4em;
+            }
+            main {
+                padding: 20px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="main-quest.html">Main Quest</a>
+        <a href="side-quests.html">Side Quests</a>
+        <a href="diceroll.html">Rzut kośćmi</a>
+        <a href="characters.html">Characters</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="submit-update.html">Submit Update</a>
+    </nav>
+
+    <main>
+        <h1>Witajcie w Otchłani Przygód!</h1>
+
+        <div class="motto-container">
+            <p class="motto">Gdzie kastracja nie wystarczy, tam drużyna dzielna walczy. Kiedy los się świata waży, kutas w ustach sam się smaży. Dorośli ludzie.</p>
+        </div>
+
+        <div class="future-content-area">
+            <p>Tutaj znajdzie się więcej przerażających wizualizacji, demonicznych portali i krwawych detali! Obserwujcie aktualizacje...</p>
+            </div>
+    </main>
+
+    <footer>
+        Stworzone dla graczy D&D
+    </footer>
+</body>
+</html>
