@@ -12,14 +12,11 @@
             color: #cc0000; /* Głęboka, krwista czerwień dla tekstu */
             font-family: 'VT323', monospace; /* Czcionka o wyglądzie retro */
             
-            /* --- NOWE, MROCZNE TEKSTURY Z DOOM --- */
-            /* Pamiętaj, aby pobrać te pliki i umieścić je w folderze 'images' */
-            /* Główna tekstura - np. metalowy panel */
-            /* Druga tekstura - np. zniszczona ściana / grunt */
-            background-image: url('images/DOORSTOP.png'), url('images/BROWNGRN.PNG'); 
+            /* --- ZAKTUALIZOWANE ŚCIEŻKI DO NOWYCH NAZW PLIKÓW --- */
+            background-image: url('images/DOORSTOP.png'), url('images/BROWNGRN.png'); 
             
             background-repeat: repeat, repeat;
-            background-size: auto, auto;
+            background-size: auto, auto; /* Obrazy w niskiej rozdzielczości będą się powtarzać */
             background-position: center center, center center;
             background-blend-mode: overlay, multiply; /* Mieszanie dla surowego efektu */
             padding: 0px;
@@ -27,6 +24,7 @@
             display: flex;
             flex-direction: column;
             min-height: 100vh; /* Rozciągnij stronę na całą wysokość widoku */
+            cursor: url('data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgIAAEBAQACAgoAIiIrACQkLAAhIQ8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAEBQUACQkKAAoKCgAaGhYACQkKAAkJCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKAAkJCQALCwQAAQEGAAkJCQAJCQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEGAAUFBwAGBgsABwcLAAgICQALCwQAAgEFACgoLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACMjLgATEx0ACgoJAAUFBwALCwQACAgIAAgICQAMDA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgIAAoKCgATExwADw8QAAoKCgAMDA0ACgoKAAsLCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFAAYGBwAHBwwADw8QABISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACoqLgAGBgsAAgEFACkpLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACQkLQAiIhYABwcLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICQAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wA'), auto; /* Kursor jak w DOOM */
             overflow-x: hidden; /* Zapobiegaj poziomemu przewijaniu od tekstur */
         }
 
@@ -36,14 +34,14 @@
             100% { background-position: 100% 100%; } /* Przewijanie tekstury dymu */
         }
 
-        body::before { /* Pseudo-element dla tekstury "gore" - np. SLIME1.PNG */
+        body::before { /* Pseudo-element dla tekstury "gore" - SLIME1.png */
             content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/SLIME1.PNG'); /* Tekstura śluzu/krwi z Dooma */
+            background-image: url('images/SLIME1.png'); /* Tekstura śluzu/krwi z Dooma */
             background-repeat: repeat;
             background-size: auto;
             opacity: 0.1; /* Niska przezroczystość dla subtelności */
@@ -62,7 +60,7 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/INNA_TEKSTURA_ANIMACJI.PNG');
+            background-image: url('images/INNA_TEKSTURA_ANIMACJI.png');
             background-repeat: repeat;
             background-size: auto;
             opacity: 0.05;
