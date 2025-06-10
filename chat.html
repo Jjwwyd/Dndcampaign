@@ -1,10 +1,8 @@
 <!DOCTYPE html>
 <html>
-  
 <head>
+  <title>Campaign Chat</title>
   <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-  <title>Real-Time Chat</title>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
   <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
 </head>
@@ -18,43 +16,66 @@
     <a href="submit-update.html">Submit Update</a>
     <a href="chat.html">Chat</a>
   </nav>
-  
-  <h2>Live Chat</h2>
-  <div id="messages" style="height: 300px; overflow-y: scroll; background: #111; color: #fff; padding: 10px;"></div>
-  <input type="text" id="username" placeholder="Your name">
-  <input type="text" id="message" placeholder="Type a message">
-  <button onclick="sendMessage()">Send</button>
+
+  <h2>Live Campaign Chat</h2>
+
+  <div id="messages" style="height: 300px; overflow-y: scroll; background: #111; color: #fff; padding: 10px; border: 1px solid #444;"></div>
+
+  <div style="margin-top: 10px;">
+    <input type="text" id="username" placeholder="Your name" style="width: 150px;">
+    <input type="text" id="message" placeholder="Type a message" style="width: 300px;">
+    <button onclick="sendMessage()">Send</button>
+  </div>
 
   <script>
-    // 🔥 Paste your Firebase config here
+    // Replace this with your actual Firebase config
     const firebaseConfig = {
-  apiKey: "AIzaSyDLgfmO_JnJEJ0l2LXPxxI5iD2B2FlYfgo",
-  authDomain: "chat-site-6a018.firebaseapp.com",
-  projectId: "chat-site-6a018",
-  storageBucket: "chat-site-6a018.firebasestorage.app",
-  messagingSenderId: "868445914716",
-  appId: "1:868445914716:web:bfe0937ff1dd2842ed0899"
-};
-    
+      apiKey: "YOUR_API_KEY",
+      authDomain: "your-project.firebaseapp.com",
+      databaseURL: "https://your-project.firebaseio.com",
+      projectId: "your-project-id",
+      storageBucket: "your-project.appspot.com",
+      messagingSenderId: "YOUR_ID",
+      appId: "YOUR_APP_ID"
+    };
 
     firebase.initializeApp(firebaseConfig);
     const db = firebase.database().ref("messages");
 
+    // Load messages
     db.on("child_added", function(snapshot) {
       const data = snapshot.val();
       const msgDiv = document.getElementById("messages");
-      msgDiv.innerHTML += `<p><strong>${data.name}:</strong> ${data.text}</p>`;
+      const time = new Date(data.timestamp).toLocaleTimeString();
+      msgDiv.innerHTML += `<p><strong>[${time}] ${data.name}:</strong> ${data.text}</p>`;
       msgDiv.scrollTop = msgDiv.scrollHeight;
     });
 
+    // Send message
     function sendMessage() {
-      const name = document.getElementById("username").value;
-      const text = document.getElementById("message").value;
-      if (name && text) {
-        db.push({ name, text });
+      const name = document.getElementById("username").value || "Anonymous";
+      const text = document.getElementById("message").value.trim();
+      if (text) {
+        db.push({
+          name: name,
+          text: text,
+          timestamp: Date.now()
+        });
         document.getElementById("message").value = "";
       }
+      localStorage.setItem("chat-username", name); // Save name
     }
+
+    // Enter key sends message
+    document.getElementById("message").addEventListener("keypress", function(e) {
+      if (e.key === "Enter") sendMessage();
+    });
+
+    // Load saved name
+    window.onload = () => {
+      const savedName = localStorage.getItem("chat-username");
+      if (savedName) document.getElementById("username").value = savedName;
+    };
   </script>
 </body>
 </html>
