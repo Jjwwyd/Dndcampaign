@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadania Główne D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Styl CSS przeniesiony z Twojego style.css i z poprzednich stron */
+        body {
+            background-color:#1a0f0f;
+            color: #00ff66;
+            font-family: 'Courier New', monospace; /* Fallback */
+            font-family: 'VT323', monospace;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            background-blend-mode: multiply;
+            padding: 0px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .vt323-regular {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+        nav {
+            background-color: #000000;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 27px;
+        }
+
+        nav a {
+            color: #cc0000;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        main {
+            padding: 40px;
+            max-width: 900px;
+            margin: 20px auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Odstępy między sekcjami zadań */
+        }
+
+        h1, h2, h3 {
+            color: #ff6600;
+            text-shadow: 0 0 3px #ff0000;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        footer {
+            text-align: center;
+            color: #444;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        /* Style dla sekcji zadań głównych */
+        .main-quest-section {
+            background-color: #000000;
+            border: 2px solid #ff6600; /* Użyj pomarańczowego koloru dla głównego zadania */
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(255, 102, 0, 0.7); /* Intensywniejszy cień */
+            text-align: left;
+            position: relative;
+        }
+
+        .main-quest-section h2 {
+            color: #00ff66;
+            text-shadow: 0 0 2px #00ff66;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #cc0000;
+            padding-bottom: 10px;
+        }
+
+        .main-quest-section p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .main-quest-section strong {
+            color: #ff6600;
+        }
+
+        .quest-status {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            border: 1px solid;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .status-active {
+            background-color: #003300; /* Ciemnozielony dla aktywnego */
+            color: #00ff66;
+            border-color: #00ff66;
+        }
+
+        .status-completed {
+            background-color: #000033; /* Ciemnoniebieski dla zakończonego */
+            color: #61dafb;
+            border-color: #61dafb;
+        }
+
+        .status-inactive { /* np. chwilowo wstrzymane lub poboczne powiązane z głównym */
+            background-color: #330000;
+            color: #ff6600;
+            border-color: #ff6600;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="main-quest.html">Main Quest</a>
+        <a href="side-quests.html">Side Quests</a>
+        <a href="diceroll.html">Rzut kośćmi</a>
+        <a href="characters.html">Characters</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="submit-update.html">Submit Update</a>
+    </nav>
+
+    <main>
+        <h1>Główne Zadania Kampanii</h1>
+
+        <div class="main-quest-section">
+            <span class="quest-status status-active">Aktywne</span>
+            <h2>Odszukaj Zaginiony Artefakt Czasu</h2>
+            <p><strong>Faza:</strong> Początkowa faza poszukiwań</p>
+            <p><strong>Cel:</strong> Odnaleźć trzy fragmenty Artefaktu Czasu, zanim wpadną w ręce Mrocznego Archimagusa Kael'thana.</p>
+            <p><strong>Aktualny etap:</strong> Drużyna bada starożytne ruiny w Posępnych Lasach, szukając wskazówek dotyczących lokalizacji pierwszego fragmentu. Odkryto niedawno tajne przejście do podziemi.</p>
+            <p><strong>Ważne NPC:</strong> Stary Mędrzec Elara (udziela wskazówek), Kael'than (główny antagonista), Gildia Poszukiwaczy (może pomóc w badaniach).</p>
+            <p><strong>Potencjalne zagrożenia:</strong> Strażnicy ruin, pułapki, agenci Kael'thana, złośliwe duchy, zaginione bestie z dawnych czasów.</p>
+        </div>
+
+        <div class="main-quest-section">
+            <span class="quest-status status-completed">Zakończone</span>
+            <h2>Pokonaj Barona Mroku z Twierdzy Cierni</h2>
+            <p><strong>Faza:</strong> Finałowa konfrontacja</p>
+            <p><strong>Cel:</strong> Zlikwidować Barona Mroku, który terroryzował pobliskie wioski i zniszczyć jego armię nieumarłych.</p>
+            <p><strong>Rozwiązanie:</strong> Drużyna przedarła się przez Twierdzę Cierni, stawiła czoła Baronowi w jego nekromantycznym laboratorium i pokonała go w zaciętej walce. Twierdza została oczyszczona.</p>
+            <p><strong>Nagrody:</strong> Wyzwolenie regionu, uznanie u władcy królestwa, dostęp do skarbca Barona.</p>
+        </div>
+
+        <div class="main-quest-section">
+            <span class="quest-status status-inactive">Nieaktywne / Następne</span>
+            <h2>[Nazwa Następnego Zadania Głównego]</h2>
+            <p><strong>Faza:</strong> [Wstaw fazę, np. planowanie, eksploracja]</p>
+            <p><strong>Cel:</strong> [Opisz główny cel zadania]</p>
+            <p><strong>Aktualny etap:</strong> [Opisz obecny stan lub wydarzenia]</p>
+            <p><strong>Ważne NPC:</strong> [Wypisz kluczowe postacie niezależne]</p>
+            <p><strong>Potencjalne zagrożenia:</strong> [Wymień ewentualne wyzwania]</p>
+        </div>
+
+    </main>
+
+    <footer>
+        Stworzone dla graczy D&D
+    </footer>
+</body>
+</html>
