@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bohaterowie Drużyny D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Styl CSS przeniesiony z Twojego style.css i z poprzedniej strony */
+        body {
+            background-color:#1a0f0f;
+            color: #00ff66;
+            font-family: 'Courier New', monospace; /* Fallback */
+            font-family: 'VT323', monospace;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            background-blend-mode: multiply;
+            padding: 0px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .vt323-regular {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+        nav {
+            background-color: #000000;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 27px;
+        }
+
+        nav a {
+            color: #cc0000;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        main {
+            padding: 40px;
+            max-width: 1200px; /* Zwiększona szerokość dla wielu sekcji */
+            margin: 20px auto; /* Dodaj trochę marginesu od góry/dołu */
+            flex-grow: 1;
+            display: grid; /* Użycie grid dla układu sekcji bohaterów */
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Responsywny grid */
+            gap: 30px; /* Odstępy między sekcjami */
+        }
+
+        h1, h2, h3 {
+            color: #ff6600;
+            text-shadow: 0 0 3px #ff0000;
+            text-align: center; /* Wyśrodkuj nagłówki */
+            margin-bottom: 25px;
+        }
+
+        button, input[type="submit"] {
+            font-family: 'VT323', monospace;
+            background-color: #000;
+            color: #00ff66;
+            border: 2px solid #cc0000;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+        }
+
+        button:hover {
+            background-color: #cc0000;
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            color: #444;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        /* Style dla sekcji bohaterów */
+        .character-section {
+            background-color: #000000; /* Tło jak nawigacja */
+            border: 2px solid #cc0000; /* Ramka w stylu bordera */
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+            text-align: left;
+        }
+
+        .character-section h2 {
+            color: #00ff66; /* Kolor nagłówków w sekcji bohatera */
+            text-shadow: 0 0 2px #00ff66;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #cc0000;
+            padding-bottom: 10px;
+        }
+
+        .character-section p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .character-section strong {
+            color: #ff6600; /* Kolor dla wyróżnionego tekstu (np. atrybuty) */
+        }
+
+        .cemetery-section {
+            grid-column: 1 / -1; /* Rozciągnij na całą szerokość siatki */
+            background-color: #1a0f0f; /* Ciemniejsze tło dla cmentarza */
+            border: 2px dashed #ff0000; /* Przerywana ramka, symbolizująca koniec */
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 15px rgba(255, 0, 0, 0.7);
+            text-align: center;
+            margin-top: 40px; /* Odstęp od aktywnych bohaterów */
+        }
+
+        .cemetery-section h2 {
+            color: #ff0000; /* Czerwony kolor dla cmentarza */
+            text-shadow: 0 0 5px #ff0000;
+            margin-bottom: 20px;
+        }
+
+        .cemetery-section .fallen-hero {
+            background-color: #000000;
+            border: 1px solid #cc0000;
+            border-radius: 5px;
+            padding: 15px;
+            margin-bottom: 15px;
+            display: inline-block; /* Aby elementy obok siebie mogły być */
+            width: calc(50% - 20px); /* Dwa obok siebie na większych ekranach */
+            box-sizing: border-box;
+            vertical-align: top; /* Wyrównanie w górnej linii */
+            margin-right: 20px;
+        }
+
+        .cemetery-section .fallen-hero:last-child {
+             margin-right: 0; /* Usuń margines z ostatniego elementu */
+        }
+
+        @media (max-width: 768px) {
+            main {
+                grid-template-columns: 1fr; /* Na małych ekranach jedna kolumna */
+                padding: 20px;
+            }
+            .cemetery-section .fallen-hero {
+                width: 100%; /* Na małych ekranach jeden na całą szerokość */
+                margin-right: 0;
+            }
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="main-quest.html">Main Quest</a>
+        <a href="side-quests.html">Side Quests</a>
+        <a href="diceroll.html">Rzut kośćmi</a>
+        <a href="characters.html">Characters</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="submit-update.html">Submit Update</a>
+    </nav>
+
+    <main>
+        <h1>Bohaterowie Drużyny</h1>
+
+        <div class="character-section">
+            <h2>Krasnoludzki Wojownik: Thorin Kamiennoręki</h2>
+            <p><strong>Rasa:</strong> Krasnolud</p>
+            <p><strong>Klasa:</strong> Wojownik</p>
+            <p><strong>Poziom:</strong> 5</p>
+            <p><strong>Cechy charakteru:</strong> Wierny towarzysz, twardy jak skała, czasem zbyt uparty. Uwielbia dobre piwo i kłótnie w tawernie.</p>
+            <p><strong>Sprzęt:</strong> Wielki topór bojowy, ciężka zbroja płytowa, tarcza z herbem klanu.</p>
+            <p>Thorin jest siłą napędową drużyny, zawsze staje na pierwszej linii, by chronić swoich towarzyszy. Jego okrzyk bojowy budzi strach w sercach goblinów i orków.</p>
+        </div>
+
+        <div class="character-section">
+            <h2>Elfi Łucznik: Aerion Cichy Szept</h2>
+            <p><strong>Rasa:</strong> Leśny Elf</p>
+            <p><strong>Klasa:</strong> Łowca</p>
+            <p><strong>Poziom:</strong> 4</p>
+            <p><strong>Cechy charakteru:</strong> Skryty, spokojny, zawsze czujny. Ma głębokie połączenie z naturą i woli las od miast.</p>
+            <p><strong>Sprzęt:</strong> Długi łuk z drzewa yew, kołczan pełen strzał, skórzana zbroja, sztylet myśliwski.</p>
+            <p>Aerion jest oczami i uszami drużyny, jego strzały zawsze trafiają w cel, a zdolności śledzenia są nieocenione w dziczy.</p>
+        </div>
+
+        <div class="character-section">
+            <h2>Ludzki Czarodziej: Lyra Światłoduszna</h2>
+            <p><strong>Rasa:</strong> Człowiek</p>
+            <p><strong>Klasa:</strong> Czarodziej (Szkoła Przywoływania)</p>
+            <p><strong>Poziom:</strong> 5</p>
+            <p><strong>Cechy charakteru:</strong> Dociekliwa, nieco rozkojarzona, ale niezwykle potężna, gdy skupi się na magii. Zawsze szuka nowych zaklęć i wiedzy.</p>
+            <p><strong>Sprzęt:</strong> Księga zaklęć, magiczna laska z kryształem, proste szaty.</p>
+            <p>Lyra jest mózgiem drużyny, jej zaklęcia potrafią odwrócić losy bitwy lub otworzyć zablokowane drogi. Często gubi się we własnych myślach.</p>
+        </div>
+
+        <div class="character-section">
+            <h2>Niziołek Złodziej: Pip Szybkie Palce</h2>
+            <p><strong>Rasa:</strong> Niziołek</p>
+            <p><strong>Klasa:</strong> Łotrzyk</p>
+            <p><strong>Poziom:</strong> 4</p>
+            <p><strong>Cechy charakteru:</strong> Psotny, zwinny, uwielbia kosztowności i dobre jedzenie. Ma złote serce, choć czasem jego ręce są szybsze niż jego moralność.</p>
+            <p><strong>Sprzęt:</strong> Dwa krótkie sztylety, wytrychy, ciemne ubranie, sakiewka zawsze pełna "znalezionych" przedmiotów.</p>
+            <p>Pip jest mistrzem podstępu i cichych działań. Potrafi otworzyć każde drzwi i ominąć każdą pułapkę, co czyni go niezastąpionym w niebezpiecznych sytuacjach.</p>
+        </div>
+
+        <div class="cemetery-section">
+            <h2>Cmentarz Bohaterów</h2>
+            <div class="fallen-hero">
+                <h3>Gniewny Barbarzyńca: Grok "Czerwony Topór"</h3>
+                <p><strong>Rasa:</strong> Pół-Ork</p>
+                <p><strong>Klasa:</strong> Barbarzyńca</p>
+                <p><strong>Poziom:</strong> 3</p>
+                <p><strong>Data śmierci:</strong> 15.03.2024</p>
+                <p>Zginął bohatersko, osłaniając odwrót drużyny przed wściekłym Ogrzykiem w Kopalniach Mroku.</p>
+            </div>
+            <div class="fallen-hero">
+                <h3>Skrytobójca: Elara Cień</h3>
+                <p><strong>Rasa:</strong> Drow (Mroczny Elf)</p>
+                <p><strong>Klasa:</strong> Łotrzyk</p>
+                <p><strong>Poziom:</strong> 2</p>
+                <p><strong>Data śmierci:</strong> 01.07.2023</p>
+                <p>Zginęła w pułapce zastawionej przez kultystów, próbując otworzyć zakazane wrota w Starożytnych Ruinach.</p>
+            </div>
+             </div>
+    </main>
+
+    <footer>
+        Stworzone dla graczy D&D
+    </footer>
+</body>
+</html>
