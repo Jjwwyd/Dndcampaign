@@ -13,14 +13,14 @@ body {
   font-style: normal;
 }
 nav {
-  background-color: #cc7231;
+  background-color: #2a2a2a;
   padding: 10px;
   margin-bottom: 20px;
   text-align: center;
 }
 
 nav a {
-  color: #ff4444;
+  color: #cc7231;
   margin: 0 15px;
   text-decoration: none;
   font-weight: bold;
