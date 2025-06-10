@@ -1,24 +1,47 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Campaign Chat</title>
-  <link rel="stylesheet" href="style.css">
+  <title>Real-Time Chat</title>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-database.js"></script>
 </head>
 <body>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="main-quest.html">Main Quest</a>
-    <a href="side-quests.html">Side Quests</a>
-    <a href="characters.html">Characters</a>
-    <a href="sessions.html">Sessions</a>
-    <a href="submit-update.html">Submit Update</a>
-    <a href="chat.html">Chat</a>
-  </nav>
+  <h2>Live Chat</h2>
+  <div id="messages" style="height: 300px; overflow-y: scroll; background: #111; color: #fff; padding: 10px;"></div>
+  <input type="text" id="username" placeholder="Your name">
+  <input type="text" id="message" placeholder="Type a message">
+  <button onclick="sendMessage()">Send</button>
 
-  <h2>Wybrzeżu Campaign Chat</h2>
+  <script>
+    // 🔥 Paste your Firebase config here
+    const firebaseConfig = {
+  apiKey: "AIzaSyDLgfmO_JnJEJ0l2LXPxxI5iD2B2FlYfgo",
+  authDomain: "chat-site-6a018.firebaseapp.com",
+  projectId: "chat-site-6a018",
+  storageBucket: "chat-site-6a018.firebasestorage.app",
+  messagingSenderId: "868445914716",
+  appId: "1:868445914716:web:bfe0937ff1dd2842ed0899"
+};
+    
 
-  <!-- Replace 'wybrzezuchat' with your actual chat name -->
-  <embed src="https://cierpimyrazem.chatango.com/clonegroup" width="600" height="400" style="border:0;" />
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.database().ref("messages");
 
+    db.on("child_added", function(snapshot) {
+      const data = snapshot.val();
+      const msgDiv = document.getElementById("messages");
+      msgDiv.innerHTML += `<p><strong>${data.name}:</strong> ${data.text}</p>`;
+      msgDiv.scrollTop = msgDiv.scrollHeight;
+    });
+
+    function sendMessage() {
+      const name = document.getElementById("username").value;
+      const text = document.getElementById("message").value;
+      if (name && text) {
+        db.push({ name, text });
+        document.getElementById("message").value = "";
+      }
+    }
+  </script>
 </body>
 </html>
