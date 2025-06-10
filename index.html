@@ -3,261 +3,225 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siedziba Drużyny D&D - Strefa Zagłady</title>
+    <title>Siedziba Drużyny D&D - Mroczna Twierdza</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         /* Globalne style dla tła, tekstu i czcionek - inspirowane DOOM i D&D */
         body {
-            background-color: #3d0000; /* Ciemna, krwista czerwień */
-            color: #00ff66; /* Jasnozielony, "terminalowy" kolor tekstu */
+            background-color: #1a0000; /* Bardzo ciemna, niemal czarna czerwień */
+            color: #cc0000; /* Głęboka, krwista czerwień dla tekstu */
             font-family: 'VT323', monospace; /* Czcionka o wyglądzie retro */
             
-            /* --- NOWE TEKSTURY Z DOOM --- */
-            /* Możesz podmienić te ścieżki na inne, które wgrałeś do folderu 'images' */
-            /* Pierwsza tekstura (główna) - np. BRICK_A.PNG */
-            /* Druga tekstura (jako overlay/dym/ogień) - np. FIREBLU.PNG */
-            background-image: url('images/BRICK_A.PNG'), url('images/FIREBLU.PNG'); 
+            /* --- NOWE, MROCZNE TEKSTURY Z DOOM --- */
+            /* Pamiętaj, aby pobrać te pliki i umieścić je w folderze 'images' */
+            /* Główna tekstura - np. metalowy panel */
+            /* Druga tekstura - np. zniszczona ściana / grunt */
+            background-image: url('images/DOORSTOP.PNG'), url('images/BROWNGRN.PNG'); 
             
             background-repeat: repeat, repeat;
-            background-size: auto, auto; /* Obrazy w niskiej rozdzielczości będą się powtarzać */
+            background-size: auto, auto;
             background-position: center center, center center;
-            background-blend-mode: hard-light, multiply; /* Mieszanie tekstur dla efektu głębi i mroku */
+            background-blend-mode: overlay, multiply; /* Mieszanie dla surowego efektu */
             padding: 0px;
             margin: 0;
             display: flex;
             flex-direction: column;
             min-height: 100vh; /* Rozciągnij stronę na całą wysokość widoku */
+            cursor: url('data:image/x-icon;base64,AAABAAEAEBAAAAEAIABoBAAAFgAAACgAAAAQAAAAIAAAAAEAIAAAAAAAAAAAABAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgIAAEBAQACAgoAIiIrACQkLAAhIQ8AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAEBAQAEBQUACQkKAAoKCgAaGhYACQkKAAkJCQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACgoKAAkJCQALCwQAAQEGAAkJCQAJCQoAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAQEGAAUFBwAGBgsABwcLAAgICQALCwQAAgEFACgoLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACMjLgATEx0ACgoJAAUFBwALCwQACAgIAAgICQAMDA0AAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAACAgIAAoKCgATExwADw8QAAoKCgAMDA0ACgoKAAsLCwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFAAYGBwAHBwwADw8QABISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACoqLgAGBgsAAgEFACkpLgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgEFACQkLQAiIhYABwcLAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAgICQAEBAQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABISEgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wAA//8AAP//AAD//wA'), auto; /* Kursor jak w DOOM */
             overflow-x: hidden; /* Zapobiegaj poziomemu przewijaniu od tekstur */
         }
 
-        /* Animacja dymu/ognia - nadaje dynamiki tłu */
+        /* Animacja dymu/ognia - teraz bardziej subtelna */
         @keyframes smoke-scroll {
             0% { background-position: 0% 0%; }
             100% { background-position: 100% 100%; } /* Przewijanie tekstury dymu */
         }
 
-        body::before { /* Pseudo-element dla drugiej tekstury tła - np. BLOODWAL.PNG */
+        body::before { /* Pseudo-element dla tekstury "gore" - np. SLIME1.PNG */
             content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('images/BLOODWAL.PNG'); /* ROZPRYSKI KRWI Z DOOM */
+            background-image: url('images/SLIME1.PNG'); /* Tekstura śluzu/krwi z Dooma */
             background-repeat: repeat;
             background-size: auto;
-            opacity: 0.15; /* Lekko zwiększona przezroczystość dla większej widoczności gore */
-            pointer-events: none; /* Nie blokuj interakcji z elementami */
-            z-index: -1; /* Umieść pod treścią */
-        }
-
-        body::after { /* Pseudo-element dla dymu/ognia (ten sam co w body, dla animacji) */
-            content: "";
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: url('images/FIREBLU.PNG'); /* ANIMOWANY DYM/OGIEŃ Z DOOM */
-            background-repeat: repeat;
-            background-size: auto;
-            opacity: 0.1; /* Trochę zwiększona przezroczystość */
+            opacity: 0.1; /* Niska przezroczystość dla subtelności */
             pointer-events: none;
             z-index: -1;
-            animation: smoke-scroll 120s linear infinite; /* Powolna animacja */
         }
 
-        /* Styl dla czcionki VT323 - upewnienie się, że jest zastosowana */
+        /* Dym usunięty z ::after, jeśli chcesz tylko statyczne tło */
+        body::after {
+            /* Usunięto animowany dym, aby stonować efekt.
+            Jeśli chcesz DOWOLNY animowany efekt (np. wolne przesuwanie się tekstury lawy),
+            możesz tu dodać inną teksturę i animację.
+            content: "";
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('images/INNA_TEKSTURA_ANIMACJI.PNG');
+            background-repeat: repeat;
+            background-size: auto;
+            opacity: 0.05;
+            pointer-events: none;
+            z-index: -1;
+            animation: smoke-scroll 120s linear infinite; */
+        }
+
+        /* Styl dla czcionki VT323 */
         .vt323-regular {
             font-family: "VT323", monospace;
             font-weight: 400;
             font-style: normal;
         }
 
-        /* Nawigacja - solidna, wyrazista, jak metalowa płyta */
+        /* Nawigacja - solidna, wyrazista, bez neonowych blasków */
         nav {
-            background-color: #110000; /* Prawie czarny, bardzo ciemny brąz/czerwień */
+            background-color: #0a0000; /* Jeszcze ciemniejsza baza */
             text-align: center;
-            padding: 1.5em 0; /* Większy padding */
+            padding: 1.2em 0; /* Nieco mniejszy padding */
             font-size: 27px;
-            border-bottom: 5px solid #cc0000; /* Gruba czerwona linia, jak spaw */
-            box-shadow: 0 0 25px rgba(204, 0, 0, 0.9); /* Pulsujący, krwawy cień */
-            position: relative; /* Dla efektów pseudo-elementów */
-            z-index: 100; /* Upewnij się, że jest na wierzchu */
+            border-bottom: 3px solid #660000; /* Głęboka czerwień */
+            box-shadow: none; /* Usunięto neonowy cień */
+            position: relative;
+            z-index: 100;
         }
-        nav::before { /* Górna krawędź */
+        nav::before, nav::after { /* Proste, metaliczne linie */
             content: '';
             position: absolute;
-            top: 0;
             left: 0;
             width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ff0000, #cc0000, #ff0000); /* Efekt spawania */
-            box-shadow: 0 0 10px #ff0000;
+            height: 2px; /* Cieńsze linie */
+            background-color: #990000; /* Mniej jaskrawa czerwień */
+            box-shadow: none; /* Usunięto neonowy cień */
         }
-        nav::after { /* Dolna krawędź */
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 100%;
-            height: 5px;
-            background: linear-gradient(to right, #ff0000, #cc0000, #ff0000);
-            box-shadow: 0 0 10px #ff0000;
-        }
-
+        nav::before { top: 0; }
+        nav::after { bottom: 0; }
 
         nav a {
-            color: #cc0000; /* Czerwony kolor linków */
+            color: #cc0000; /* Głęboka czerwień linków */
             text-decoration: none;
-            margin: 0 20px; /* Większy margines */
-            transition: color 0.2s, text-shadow 0.2s; /* Szybsze przejścia */
+            margin: 0 18px; /* Odstępy */
+            transition: color 0.2s; /* Brak cienia tekstowego */
             font-weight: bold;
-            font-size: 34px; /* Jeszcze większa czcionka */
-            text-shadow: 0 0 8px rgba(204, 0, 0, 0.7); /* Bardziej intensywny cień tekstowy */
-            letter-spacing: 2px; /* Większe odstępy liter */
+            font-size: 30px; /* Standardowy rozmiar */
+            text-shadow: none; /* Usunięto neonowy cień */
+            letter-spacing: 1px; /* Mniejsze rozstrzelenie */
         }
 
         nav a:hover {
-            color: #ffaa00; /* Pomarańczowy po najechaniu - jak rozgrzany metal */
-            text-shadow: 0 0 15px rgba(255, 170, 0, 1), 0 0 30px rgba(255, 170, 0, 0.7);
+            color: #ff3300; /* Jasniejsza czerwień po najechaniu */
+            text-shadow: none; /* Brak cienia */
         }
 
         /* Główna sekcja strony */
         main {
-            padding: 50px; /* Większy padding */
-            max-width: 1000px; /* Nieco szerszy main */
-            margin: 30px auto; /* Większy margines */
-            flex-grow: 1; /* Pozwala na rozciągnięcie maina */
+            padding: 40px;
+            max-width: 900px;
+            margin: 20px auto;
+            flex-grow: 1;
             text-align: center;
-            position: relative; /* Dla dodatkowych efektów */
-            z-index: 1; /* Upewnij się, że jest nad tłem */
+            position: relative;
+            z-index: 1;
         }
 
-        /* Nagłówki - ogniste i wyraźne */
+        /* Nagłówki - wyraziste, ale bez neonu */
         h1 {
-            color: #ff6600; /* Pomarańczowy, jak płomienie */
-            text-shadow: 0 0 10px #ff0000, 0 0 20px rgba(255, 102, 0, 0.8), 0 0 30px rgba(255, 0, 0, 0.5); /* Wielość cieni dla głębszego blasku */
-            font-size: 5em; /* Ogromny, dominujący nagłówek */
-            margin-bottom: 40px;
-            text-transform: uppercase; /* Wielkie litery, agresywny wygląd */
-            letter-spacing: 8px; /* Rozstrzelony tekst */
-            border: 2px solid #ff0000; /* Czerwona ramka */
-            padding: 15px 25px;
-            background-color: rgba(0, 0, 0, 0.7); /* Półprzezroczyste czarne tło */
-            box-shadow: 0 0 25px rgba(255, 0, 0, 0.9); /* Mocny czerwony cień */
-            display: inline-block; /* Aby ramka otaczała tekst */
+            color: #ff3300; /* Intensywna czerwień */
+            text-shadow: 0 0 5px #660000; /* Subtelny cień */
+            font-size: 4.5em; /* Nadal duży */
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            border: 1px solid #990000; /* Cieńsza, ciemniejsza ramka */
+            padding: 10px 20px;
+            background-color: rgba(0, 0, 0, 0.8); /* Ciemniejsze tło */
+            box-shadow: none; /* Usunięto neonowy cień */
+            display: inline-block;
         }
 
-        /* Przypis - umieszczony w centralnym bloku */
+        /* Przypis - brutalny, ale bez świecenia */
         .motto-container {
-            background-color: rgba(0, 0, 0, 0.9); /* Prawie nieprzezroczyste czarne tło */
-            border: 4px ridge #ff0000; /* Styl "ridge" dla efektu wgłębienia, grubsza ramka */
-            border-radius: 5px; /* Delikatne zaokrąglenie */
-            padding: 40px; /* Większy padding */
-            margin-top: 60px; /* Większy margines od góry */
-            box-shadow: 0 0 30px rgba(255, 0, 0, 1), 0 0 50px rgba(255, 0, 0, 0.7); /* Bardzo mocny, krwawy cień */
-            max-width: 700px; /* Zwiększona szerokość */
+            background-color: rgba(0, 0, 0, 0.95); /* Bardzo ciemne, niemal nieprzezroczyste tło */
+            border: 3px solid #660000; /* Gruba, matowa czerwień */
+            border-radius: 3px; /* Mniejsze zaokrąglenie */
+            padding: 30px;
+            margin-top: 50px;
+            box-shadow: none; /* Usunięto neonowy cień */
+            max-width: 650px;
             margin-left: auto;
             margin-right: auto;
             position: relative;
-            overflow: hidden; /* Ukryj nadmiar animacji wewnątrz */
+            overflow: hidden;
         }
-        .motto-container::before { /* Efekt "piekielnych pęknięć" lub krawędzi */
+        .motto-container::before { /* Usunięto pulsowanie i neonowy cień */
             content: '';
             position: absolute;
-            top: -10px; left: -10px; right: -10px; bottom: -10px;
-            border: 2px solid #cc0000; /* Wewnętrzna, ciemniejsza ramka */
-            border-radius: 8px;
-            animation: pulse-border 2s infinite alternate; /* Delikatne pulsowanie ramki */
+            top: -5px; left: -5px; right: -5px; bottom: -5px;
+            border: 1px solid #330000; /* Ciemniejsza, subtelniejsza ramka */
+            border-radius: 5px;
+            animation: none; /* Usunięto animację */
+            box-shadow: none; /* Usunięto neonowy cień */
             pointer-events: none;
         }
 
-        @keyframes pulse-border {
-            0% { border-color: #cc0000; box-shadow: 0 0 10px #ff0000; }
-            100% { border-color: #ff0000; box-shadow: 0 0 25px #ff6600; }
-        }
-
         .motto {
-            color: #ffaa00; /* Jasny pomarańcz */
-            font-size: 2.2em; /* Jeszcze większy rozmiar czcionki */
-            line-height: 1.6; /* Lepsza czytelność */
+            color: #ff6600; /* Mroczny pomarańcz */
+            font-size: 2em;
+            line-height: 1.5;
             font-weight: bold;
-            text-shadow: 0 0 8px rgba(255, 170, 0, 0.8), 0 0 15px rgba(255, 102, 0, 0.5); /* Mocniejsze cienie */
-            text-transform: uppercase; /* Wielkie litery */
-            position: relative; /* Dla z-index */
-            z-index: 2; /* Upewnij się, że tekst jest nad ewentualnymi animacjami tła */
+            text-shadow: 0 0 3px #330000; /* Delikatny, ciemny cień */
+            text-transform: uppercase;
+            position: relative;
+            z-index: 2;
         }
 
-        /* Dodatkowy obszar na przyszłe elementy - jeszcze bardziej mroczny */
+        /* Obszar na przyszłe elementy - surowy wygląd */
         .future-content-area {
-            background-color: rgba(0, 0, 0, 0.85); /* Bardziej nieprzezroczyste tło */
-            border: 3px dashed #00ff66; /* Grubsza, przerywana zielona ramka */
-            padding: 30px;
-            margin-top: 70px; /* Większy margines */
-            border-radius: 12px;
-            color: #00ff66;
+            background-color: rgba(0, 0, 0, 0.9); /* Bardzo ciemne tło */
+            border: 2px dashed #336600; /* Ciemna zieleń */
+            padding: 25px;
+            margin-top: 60px;
+            border-radius: 8px;
+            color: #99ff66; /* Jasniejsza zieleń tekstu */
             font-style: italic;
-            font-size: 1.3em; /* Większa czcionka */
+            font-size: 1.2em;
             text-align: center;
-            box-shadow: 0 0 15px rgba(0, 255, 102, 0.7); /* Zielony cień */
+            box-shadow: none; /* Usunięto neonowy cień */
         }
         .future-content-area p {
-            margin-bottom: 15px;
-            text-shadow: 0 0 5px rgba(0, 255, 102, 0.5);
+            margin-bottom: 12px;
+            text-shadow: 0 0 2px #003300; /* Subtelny ciemny cień */
         }
 
-        /* Stopka - metaliczny, przygnębiający wygląd */
+        /* Stopka - bez blasku */
         footer {
             text-align: center;
-            color: #777; /* Ciemnoszary kolor */
-            padding: 25px 0; /* Większy padding */
-            margin-top: auto; /* Przypnij do dołu strony */
-            border-top: 3px solid #444; /* Ciemna, metaliczna linia */
-            background-color: #0d0000; /* Bardzo ciemne tło stopki */
-            text-shadow: 0 0 2px #000;
+            color: #555; /* Ciemniejszy kolor */
+            padding: 20px 0;
+            margin-top: auto;
+            border-top: 2px solid #333; /* Cieńsza, ciemniejsza linia */
+            background-color: #050000; /* Bardzo ciemne tło stopki */
+            text-shadow: none; /* Usunięto cień */
         }
 
-        /* Responsywność dla mniejszych ekranów */
+        /* Responsywność */
         @media (max-width: 768px) {
-            nav {
-                font-size: 18px;
-                padding: 1em 0;
-            }
-            nav a {
-                font-size: 20px;
-                margin: 0 5px;
-            }
-            h1 {
-                font-size: 3em;
-                letter-spacing: 4px;
-                padding: 10px 15px;
-            }
-            .motto-container {
-                padding: 25px;
-                margin-top: 40px;
-            }
-            .motto {
-                font-size: 1.6em;
-            }
-            main {
-                padding: 25px;
-            }
-            .future-content-area {
-                margin-top: 50px;
-                padding: 20px;
-                font-size: 1em;
-            }
+            nav { font-size: 16px; padding: 1em 0; }
+            nav a { font-size: 18px; margin: 0 5px; }
+            h1 { font-size: 2.8em; letter-spacing: 3px; padding: 8px 12px; }
+            .motto-container { padding: 20px; margin-top: 30px; }
+            .motto { font-size: 1.4em; }
+            main { padding: 20px; }
+            .future-content-area { margin-top: 40px; padding: 15px; font-size: 1em; }
         }
-
         @media (max-width: 480px) {
-            h1 {
-                font-size: 2.2em;
-                letter-spacing: 2px;
-            }
-            .motto {
-                font-size: 1.2em;
-            }
+            h1 { font-size: 2em; letter-spacing: 1px; }
+            .motto { font-size: 1.1em; }
         }
     </style>
 </head>
@@ -280,8 +244,8 @@
         </div>
 
         <div class="future-content-area">
-            <p>Piekło czeka na Wasze nowe raporty o bestiach, szaleństwie i heroicznych (lub krwawych) czynach!</p>
-            <p>Przygotujcie się na kolejne uderzenie demona... wkrótce.</p>
+            <p>To nie jest gra. To rzeczywistość.</p>
+            <p>Przygotujcie się na rzeź. Czekają nowe wyzwania.</p>
             </div>
     </main>
 
