@@ -11,9 +11,15 @@
             background-color: #3d0000; /* Ciemna, krwista czerwień */
             color: #00ff66; /* Jasnozielony, "terminalowy" kolor tekstu */
             font-family: 'VT323', monospace; /* Czcionka o wyglądzie retro */
-            background-image: url('https://i.imgur.com/8Q0N38p.png'), url('https://i.imgur.com/k6x3E6k.png'); /* Piekielna tekstura cegieł i animowany dym */
+            
+            /* --- NOWE TEKSTURY Z DOOM --- */
+            /* Możesz podmienić te ścieżki na inne, które wgrałeś do folderu 'images' */
+            /* Pierwsza tekstura (główna) - np. BRICK_A.PNG */
+            /* Druga tekstura (jako overlay/dym/ogień) - np. FIREBLU.PNG */
+            background-image: url('images/BRICK_A.PNG'), url('images/FIREBLU.PNG'); 
+            
             background-repeat: repeat, repeat;
-            background-size: auto, auto;
+            background-size: auto, auto; /* Obrazy w niskiej rozdzielczości będą się powtarzać */
             background-position: center center, center center;
             background-blend-mode: hard-light, multiply; /* Mieszanie tekstur dla efektu głębi i mroku */
             padding: 0px;
@@ -31,32 +37,32 @@
             100% { background-position: 100% 100%; } /* Przewijanie tekstury dymu */
         }
 
-        body::before { /* Pseudo-element dla drugiej tekstury tła */
+        body::before { /* Pseudo-element dla drugiej tekstury tła - np. BLOODWAL.PNG */
             content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://www.transparenttextures.com/patterns/blood-splatter.png'); /* Rozpryski krwi */
+            background-image: url('images/BLOODWAL.PNG'); /* ROZPRYSKI KRWI Z DOOM */
             background-repeat: repeat;
             background-size: auto;
-            opacity: 0.1; /* Niska przezroczystość, żeby nie dominowało */
+            opacity: 0.15; /* Lekko zwiększona przezroczystość dla większej widoczności gore */
             pointer-events: none; /* Nie blokuj interakcji z elementami */
             z-index: -1; /* Umieść pod treścią */
         }
 
-        body::after { /* Pseudo-element dla dymu */
+        body::after { /* Pseudo-element dla dymu/ognia (ten sam co w body, dla animacji) */
             content: "";
             position: fixed;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
-            background-image: url('https://i.imgur.com/k6x3E6k.png'); /* Animowany dym */
+            background-image: url('images/FIREBLU.PNG'); /* ANIMOWANY DYM/OGIEŃ Z DOOM */
             background-repeat: repeat;
             background-size: auto;
-            opacity: 0.05; /* Bardzo subtelny dym */
+            opacity: 0.1; /* Trochę zwiększona przezroczystość */
             pointer-events: none;
             z-index: -1;
             animation: smoke-scroll 120s linear infinite; /* Powolna animacja */
