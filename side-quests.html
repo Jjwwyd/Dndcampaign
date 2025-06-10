@@ -1,0 +1,390 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadania Poboczne D&D</title>
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
+    <style>
+        /* Styl CSS przeniesiony z Twojego style.css i z poprzednich stron */
+        body {
+            background-color:#1a0f0f;
+            color: #00ff66;
+            font-family: 'Courier New', monospace; /* Fallback */
+            font-family: 'VT323', monospace;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            background-blend-mode: multiply;
+            padding: 0px;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        .vt323-regular {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+        nav {
+            background-color: #000000;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 27px;
+        }
+
+        nav a {
+            color: #cc0000;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        main {
+            padding: 40px;
+            max-width: 900px;
+            margin: 20px auto;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            gap: 25px; /* Odstępy między sekcjami zadań */
+        }
+
+        h1, h2, h3 {
+            color: #ff6600;
+            text-shadow: 0 0 3px #ff0000;
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        button, input[type="submit"] {
+            font-family: 'VT323', monospace;
+            background-color: #000;
+            color: #00ff66;
+            border: 2px solid #cc0000;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px;
+            margin-top: 15px; /* Dodatkowy margines dla przycisków */
+        }
+
+        button:hover {
+            background-color: #cc0000;
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            color: #444;
+            padding: 20px 0;
+            margin-top: auto;
+        }
+
+        /* Style dla sekcji zadań */
+        .quest-section {
+            background-color: #000000;
+            border: 2px solid #cc0000;
+            border-radius: 10px;
+            padding: 25px;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
+            text-align: left;
+            position: relative; /* Dla statusu */
+        }
+
+        .quest-section h2 {
+            color: #00ff66;
+            text-shadow: 0 0 2px #00ff66;
+            margin-top: 0;
+            margin-bottom: 15px;
+            border-bottom: 1px solid #cc0000;
+            padding-bottom: 10px;
+        }
+
+        .quest-section p {
+            margin-bottom: 10px;
+            line-height: 1.5;
+        }
+
+        .quest-section strong {
+            color: #ff6600;
+        }
+
+        /* Styl dla statusu zadania */
+        .quest-status {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-weight: bold;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.9em;
+            text-transform: uppercase;
+            border: 1px solid;
+            box-shadow: 0 0 5px rgba(0,0,0,0.3);
+        }
+
+        .status-unstarted {
+            background-color: #330000; /* Ciemnoczerwony */
+            color: #ff6600;
+            border-color: #ff6600;
+        }
+
+        .status-in-progress {
+            background-color: #003300; /* Ciemnozielony */
+            color: #00ff66;
+            border-color: #00ff66;
+        }
+
+        .status-completed {
+            background-color: #000033; /* Ciemnoniebieski */
+            color: #61dafb; /* Użyłem koloru zbliżonego do niebieskiego/turkusowego */
+            border-color: #61dafb;
+        }
+        
+        .quest-actions {
+            text-align: right;
+            margin-top: 15px;
+        }
+
+        .quest-actions button {
+            margin-left: 10px;
+        }
+
+        textarea {
+            width: calc(100% - 24px); /* Odjęcie paddingu i borderu */
+            padding: 10px;
+            margin-top: 10px;
+            margin-bottom: 15px;
+            border: 2px solid #cc0000;
+            background-color: #000;
+            color: #00ff66;
+            font-family: 'VT323', monospace;
+            font-size: 1em;
+            resize: vertical; /* Pozwól na zmianę wysokości */
+            min-height: 80px;
+        }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="main-quest.html">Main Quest</a>
+        <a href="side-quests.html">Side Quests</a>
+        <a href="diceroll.html">Rzut kośćmi</a>
+        <a href="characters.html">Characters</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="submit-update.html">Submit Update</a>
+    </nav>
+
+    <main>
+        <h1>Zadania Poboczne</h1>
+
+        <div class="quest-section" id="quest1">
+            <span class="quest-status status-unstarted" data-status="unstarted">Niezaczęte</span>
+            <h2>Oczyść jaskinię goblinów</h2>
+            <p><strong>Źródło zadania:</strong> Wójt wioski Oakhaven</p>
+            <p><strong>Opis:</strong> Gobliny zagnieździły się w pobliskiej jaskini i nękają kupców na drodze. Trzeba je przegonić lub zlikwidować.</p>
+            <p><strong>Nagroda:</strong> 50 złotych monet, 100 XP dla każdego członka drużyny, reputacja w Oakhaven.</p>
+            <div class="quest-actions">
+                <button onclick="editQuest('quest1')">Edytuj</button>
+                <button onclick="changeStatus('quest1', 'in-progress')">Ustaw jako "In Progress"</button>
+                <button onclick="changeStatus('quest1', 'completed')">Ustaw jako "Zakończone"</button>
+            </div>
+        </div>
+
+        <div class="quest-section" id="quest2">
+            <span class="quest-status status-in-progress" data-status="in-progress">In Progress</span>
+            <h2>Odnajdź zaginiony amulet</h2>
+            <p><strong>Źródło zadania:</strong> Stara wiedźma z Bagien</p>
+            <p><strong>Opis:</strong> Zaginął magiczny amulet rodowy wiedźmy. Znaleziono ślady, które prowadzą do leśnych trolli.</p>
+            <p><strong>Nagroda:</strong> Eliksir uzdrawiania, 75 XP dla każdego członka drużyny, tajemna wiedza o okolicznych bagnach.</p>
+            <div class="quest-actions">
+                <button onclick="editQuest('quest2')">Edytuj</button>
+                <button onclick="changeStatus('quest2', 'unstarted')">Ustaw jako "Niezaczęte"</button>
+                <button onclick="changeStatus('quest2', 'completed')">Ustaw jako "Zakończone"</button>
+            </div>
+        </div>
+
+        <div class="quest-section" id="quest3">
+            <span class="quest-status status-completed" data-status="completed">Zakończone</span>
+            <h2>Uratuj kotka z drzewa</h2>
+            <p><strong>Źródło zadania:</strong> Dzieci z wioski</p>
+            <p><strong>Opis:</strong> Mały kotek utknął na wysokim drzewie i boi się zejść.</p>
+            <p><strong>Nagroda:</strong> Uśmiech dzieci, 10 XP dla każdego członka drużyny, ciastka od piekarza.</p>
+            <div class="quest-actions">
+                <button onclick="editQuest('quest3')">Edytuj</button>
+                <button onclick="changeStatus('quest3', 'unstarted')">Ustaw jako "Niezaczęte"</button>
+                <button onclick="changeStatus('quest3', 'in-progress')">Ustaw jako "In Progress"</button>
+            </div>
+        </div>
+        
+        <div class="quest-section" id="quest4">
+            <span class="quest-status status-unstarted" data-status="unstarted">Niezaczęte</span>
+            <h2>[Nazwa nowego zadania]</h2>
+            <p><strong>Źródło zadania:</strong> [Wstaw źródło]</p>
+            <p><strong>Opis:</strong> [Opis zadania]</p>
+            <p><strong>Nagroda:</strong> [Nagroda za zadanie]</p>
+            <div class="quest-actions">
+                <button onclick="editQuest('quest4')">Edytuj</button>
+                <button onclick="changeStatus('quest4', 'in-progress')">Ustaw jako "In Progress"</button>
+                <button onclick="changeStatus('quest4', 'completed')">Ustaw jako "Zakończone"</button>
+            </div>
+        </div>
+
+    </main>
+
+    <footer>
+        Stworzone dla graczy D&D
+    </footer>
+
+    <script>
+        function changeStatus(questId, newStatus) {
+            const questElement = document.getElementById(questId);
+            if (questElement) {
+                const statusSpan = questElement.querySelector('.quest-status');
+                statusSpan.className = `quest-status status-${newStatus}`;
+                statusSpan.dataset.status = newStatus;
+
+                // Zmieniamy tekst statusu
+                let statusText = '';
+                if (newStatus === 'unstarted') {
+                    statusText = 'Niezaczęte';
+                } else if (newStatus === 'in-progress') {
+                    statusText = 'In Progress';
+                } else if (newStatus === 'completed') {
+                    statusText = 'Zakończone';
+                }
+                statusSpan.textContent = statusText;
+            }
+        }
+
+        function editQuest(questId) {
+            const questElement = document.getElementById(questId);
+            if (!questElement) return;
+
+            const titleElement = questElement.querySelector('h2');
+            const sourceElement = questElement.querySelector('p:nth-of-type(1)'); // Pierwszy paragraf
+            const descriptionElement = questElement.querySelector('p:nth-of-type(2)'); // Drugi paragraf
+            const rewardElement = questElement.querySelector('p:nth-of-type(3)'); // Trzeci paragraf
+            const actionsDiv = questElement.querySelector('.quest-actions');
+
+            if (questElement.dataset.editing === 'true') {
+                // Zakończ edycję
+                titleElement.innerHTML = titleElement.querySelector('textarea').value;
+                sourceElement.innerHTML = `<strong>Źródło zadania:</strong> ${sourceElement.querySelector('textarea').value}`;
+                descriptionElement.innerHTML = `<strong>Opis:</strong> ${descriptionElement.querySelector('textarea').value}`;
+                rewardElement.innerHTML = `<strong>Nagroda:</strong> ${rewardElement.querySelector('textarea').value}`;
+                
+                // Usuń pola tekstowe i przyciski edycji
+                titleElement.querySelector('textarea').remove();
+                sourceElement.querySelector('textarea').remove();
+                descriptionElement.querySelector('textarea').remove();
+                rewardElement.querySelector('textarea').remove();
+                
+                actionsDiv.style.display = 'block'; // Pokaż ponownie przyciski akcji
+                questElement.dataset.editing = 'false';
+                questElement.querySelector('.edit-button').textContent = 'Edytuj'; // Przywróć tekst przycisku
+            } else {
+                // Rozpocznij edycję
+                const currentTitle = titleElement.textContent;
+                const currentSource = sourceElement.textContent.replace('Źródło zadania: ', '');
+                const currentDescription = descriptionElement.textContent.replace('Opis: ', '');
+                const currentReward = rewardElement.textContent.replace('Nagroda: ', '');
+
+                titleElement.innerHTML = `<textarea>${currentTitle}</textarea>`;
+                sourceElement.innerHTML = `<strong>Źródło zadania:</strong> <textarea>${currentSource}</textarea>`;
+                descriptionElement.innerHTML = `<strong>Opis:</strong> <textarea>${currentDescription}</textarea>`;
+                rewardElement.innerHTML = `<strong>Nagroda:</strong> <textarea>${currentReward}</textarea>`;
+                
+                actionsDiv.style.display = 'none'; // Ukryj przyciski akcji podczas edycji
+                questElement.dataset.editing = 'true';
+
+                // Zmień przycisk "Edytuj" na "Zapisz"
+                const editButton = actionsDiv.previousElementSibling; // Przycisk edytuj jest przed div.quest-actions
+                // Trzeba trochę inaczej obsłużyć przyciski, bo są w innym divie
+                const mainEditButton = questElement.querySelector('.quest-actions button:first-child');
+                mainEditButton.textContent = 'Zapisz';
+                mainEditButton.onclick = function() {
+                    saveQuest(questId);
+                };
+
+                // Dodaj przycisk "Anuluj"
+                const cancelButton = document.createElement('button');
+                cancelButton.textContent = 'Anuluj';
+                cancelButton.onclick = function() {
+                    cancelEdit(questId, currentTitle, currentSource, currentDescription, currentReward);
+                };
+                actionsDiv.appendChild(cancelButton); // Dodaj przycisk anuluj do akcji
+
+                actionsDiv.style.display = 'flex'; // Upewnij się, że są widoczne
+                actionsDiv.style.justifyContent = 'flex-end'; // Wyrównaj do prawej
+            }
+        }
+
+        // Funkcja do zapisu zmian
+        function saveQuest(questId) {
+            const questElement = document.getElementById(questId);
+            const titleElement = questElement.querySelector('h2');
+            const sourceElement = questElement.querySelector('p:nth-of-type(1)');
+            const descriptionElement = questElement.querySelector('p:nth-of-type(2)');
+            const rewardElement = questElement.querySelector('p:nth-of-type(3)');
+            const actionsDiv = questElement.querySelector('.quest-actions');
+
+            titleElement.innerHTML = titleElement.querySelector('textarea').value;
+            sourceElement.innerHTML = `<strong>Źródło zadania:</strong> ${sourceElement.querySelector('textarea').value}`;
+            descriptionElement.innerHTML = `<strong>Opis:</strong> ${descriptionElement.querySelector('textarea').value}`;
+            rewardElement.innerHTML = `<strong>Nagroda:</strong> ${rewardElement.querySelector('textarea').value}`;
+
+            // Usuń pola tekstowe
+            titleElement.querySelector('textarea').remove();
+            sourceElement.querySelector('textarea').remove();
+            descriptionElement.querySelector('textarea').remove();
+            rewardElement.querySelector('textarea').remove();
+
+            // Przywróć oryginalne przyciski i ich funkcje
+            actionsDiv.innerHTML = `
+                <button onclick="editQuest('${questId}')">Edytuj</button>
+                <button onclick="changeStatus('${questId}', 'in-progress')">Ustaw jako "In Progress"</button>
+                <button onclick="changeStatus('${questId}', 'completed')">Ustaw jako "Zakończone"</button>
+            `;
+            questElement.dataset.editing = 'false';
+            actionsDiv.style.display = 'block'; // Upewnij się, że są widoczne
+        }
+
+        // Funkcja do anulowania edycji
+        function cancelEdit(questId, originalTitle, originalSource, originalDescription, originalReward) {
+            const questElement = document.getElementById(questId);
+            const titleElement = questElement.querySelector('h2');
+            const sourceElement = questElement.querySelector('p:nth-of-type(1)');
+            const descriptionElement = questElement.querySelector('p:nth-of-type(2)');
+            const rewardElement = questElement.querySelector('p:nth-of-type(3)');
+            const actionsDiv = questElement.querySelector('.quest-actions');
+
+            titleElement.innerHTML = originalTitle;
+            sourceElement.innerHTML = `<strong>Źródło zadania:</strong> ${originalSource}`;
+            descriptionElement.innerHTML = `<strong>Opis:</strong> ${originalDescription}`;
+            rewardElement.innerHTML = `<strong>Nagroda:</strong> ${originalReward}`;
+
+            // Usuń pola tekstowe
+            titleElement.querySelector('textarea').remove();
+            sourceElement.querySelector('textarea').remove();
+            descriptionElement.querySelector('textarea').remove();
+            rewardElement.querySelector('textarea').remove();
+
+            // Przywróć oryginalne przyciski i ich funkcje
+            actionsDiv.innerHTML = `
+                <button onclick="editQuest('${questId}')">Edytuj</button>
+                <button onclick="changeStatus('${questId}', 'in-progress')">Ustaw jako "In Progress"</button>
+                <button onclick="changeStatus('${questId}', 'completed')">Ustaw jako "Zakończone"</button>
+            `;
+            questElement.dataset.editing = 'false';
+            actionsDiv.style.display = 'block';
+        }
+
+    </script>
+</body>
+</html>
