@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generator Kości D&D</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: #282c34;
+            color: #f0f0f0;
+            margin: 0;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+
+        .container {
+            background-color: #3a3f47;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            text-align: center;
+            width: 100%;
+            max-width: 500px;
+        }
+
+        h1 {
+            color: #61dafb;
+            margin-bottom: 25px;
+        }
+
+        .input-group {
+            margin-bottom: 20px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        label {
+            margin-bottom: 8px;
+            font-size: 1.1em;
+            color: #cccccc;
+        }
+
+        select, input[type="number"] {
+            padding: 10px;
+            border-radius: 5px;
+            border: 1px solid #555;
+            background-color: #4a4f57;
+            color: #f0f0f0;
+            font-size: 1em;
+            width: calc(100% - 22px); /* Adjust for padding and border */
+            max-width: 200px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            background-color: #61dafb;
+            color: #282c34;
+            padding: 12px 25px;
+            border: none;
+            border-radius: 5px;
+            font-size: 1.1em;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #4fa3d7;
+        }
+
+        .results {
+            margin-top: 30px;
+            border-top: 1px solid #555;
+            padding-top: 20px;
+            text-align: left;
+        }
+
+        .results h2 {
+            color: #61dafb;
+            margin-bottom: 15px;
+        }
+
+        .result-item {
+            background-color: #4a4f57;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .result-item span {
+            font-size: 1.2em;
+            font-weight: bold;
+            color: #f0f0f0;
+        }
+
+        .result-item .dice-type {
+            font-size: 0.9em;
+            color: #ccc;
+        }
+
+        footer {
+            margin-top: 40px;
+            font-size: 0.8em;
+            color: #aaa;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Generator Kości D&D</h1>
+
+        <div class="input-group">
+            <label for="diceType">Wybierz typ kości:</label>
+            <select id="diceType">
+                <option value="4">K4 (4-ścienna)</option>
+                <option value="6">K6 (6-ścienna)</option>
+                <option value="8">K8 (8-ścienna)</option>
+                <option value="10">K10 (10-ścienna)</option>
+                <option value="12">K12 (12-ścienna)</option>
+                <option value="20">K20 (20-ścienna)</option>
+                <option value="100">K100 (100-ścienna)</option>
+            </select>
+        </div>
+
+        <div class="input-group">
+            <label for="numDice">Ile kości rzucić?</label>
+            <input type="number" id="numDice" value="1" min="1" max="10">
+        </div>
+
+        <button onclick="rollDice()">Rzuć kośćmi!</button>
+
+        <div class="results" id="results">
+            <h2>Wyniki rzutów:</h2>
+            <p>Tutaj pojawią się Twoje wyniki.</p>
+        </div>
+    </div>
+
+    <footer>
+        Stworzone dla graczy D&D
+    </footer>
+
+    <script>
+        function rollDice() {
+            const diceType = parseInt(document.getElementById('diceType').value);
+            const numDice = parseInt(document.getElementById('numDice').value);
+            const resultsDiv = document.getElementById('results');
+
+            resultsDiv.innerHTML = '<h2>Wyniki rzutów:</h2>'; // Clear previous results
+
+            if (isNaN(diceType) || isNaN(numDice) || numDice < 1 || numDice > 10) {
+                resultsDiv.innerHTML += '<p style="color: #ff6347;">Proszę wybrać poprawny typ kości i liczbę kości (od 1 do 10).</p>';
+                return;
+            }
+
+            let totalSum = 0;
+            const diceResults = [];
+
+            for (let i = 0; i < numDice; i++) {
+                const roll = Math.floor(Math.random() * diceType) + 1;
+                diceResults.push(roll);
+                totalSum += roll;
+
+                const resultItem = document.createElement('div');
+                resultItem.classList.add('result-item');
+                resultItem.innerHTML = `
+                    <span>Rzut ${i + 1}: ${roll}</span>
+                    <span class="dice-type">(K${diceType})</span>
+                `;
+                resultsDiv.appendChild(resultItem);
+            }
+
+            if (numDice > 1) {
+                const totalResultItem = document.createElement('div');
+                totalResultItem.classList.add('result-item');
+                totalResultItem.style.marginTop = '15px';
+                totalResultItem.style.backgroundColor = '#5cb85c'; /* A different color for total */
+                totalResultItem.innerHTML = `
+                    <span>Suma wszystkich rzutów: ${totalSum}</span>
+                    <span class="dice-type"></span>
+                `;
+                resultsDiv.appendChild(totalResultItem);
+            }
+        }
+    </script>
+</body>
+</html>
