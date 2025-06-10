@@ -1,49 +1,96 @@
 <!DOCTYPE html>
-<html>
-<head>
-  <title>Generator Kości D&D</title>
-  <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-</head>
-
+<html lang="pl">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Generator Kości D&D</title>
-    <link rel="stylesheet" href="style.css">
-  <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
-       
+    <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
         body {
+            background-color:#1a0f0f;
+            color: #00ff66;
+            font-family: 'Courier New', monospace; /* Fallback */
             font-family: 'VT323', monospace;
+            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
+            background-blend-mode: multiply;
+            padding: 0px;
+            margin: 0; /* Upewnij się, że nie ma domyślnego marginesu */
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh; /* Rozciągnij na całą wysokość widoku */
+        }
+        .vt323-regular {
+            font-family: "VT323", monospace;
+            font-weight: 400;
+            font-style: normal;
+        }
+        nav {
+            background-color: #000000;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 27px;
+        }
+
+        nav a {
+            color: #cc0000;
+            text-decoration: none;
+            margin: 0 15px;
+            transition: color 0.3s;
+            font-weight: bold;
+            font-size: 30px;
+        }
+        nav a:hover {
+            color: #ff6600;
+        }
+
+        main {
+            padding: 40px;
+            max-width: 800px;
+            margin: auto; /* Wyśrodkowanie głównej treści */
+            flex-grow: 1; /* Pozwól mainowi rozciągnąć się i zająć dostępną przestrzeń */
             display: flex;
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            min-height: 100vh;
-            
-            background-image: url('https://www.transparenttextures.com/patterns/asfalt-light.png');
-            background-blend-mode: multiply;
-
-            color: #f0f0f0;
-            margin: 0;
-            padding: 20px;
-            box-sizing: border-box;
         }
 
+        h1, h2, h3 {
+            color: #ff6600;
+            text-shadow: 0 0 3px #ff0000;
+        }
+
+        button, input[type="submit"] {
+            font-family: 'VT323', monospace;
+            background-color: #000;
+            color: #00ff66;
+            border: 2px solid #cc0000;
+            padding: 10px 20px;
+            cursor: pointer;
+            font-size: 20px; /* Dostosuj rozmiar czcionki przycisku */
+        }
+
+        button:hover {
+            background-color: #cc0000;
+            color: #000;
+        }
+
+        footer {
+            text-align: center;
+            color: #444;
+            padding: 20px 0;
+            margin-top: auto; /* Przypnij stopkę do dołu */
+        }
+
+        /* Style specyficzne dla generatora kości, dostosowane do nowego schematu kolorów */
         .container {
-            background-color: #543724;
+            background-color: #1a0f0f; /* Użyj głównego koloru tła lub ciemniejszego wariantu */
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.5); /* Cień pasujący do schematu */
             text-align: center;
             width: 100%;
             max-width: 500px;
-        }
-
-        h1 {
-            color: #00ff66;
-            margin-bottom: 25px;
+            border: 2px solid #cc0000; /* Ramka pasująca do przycisków */
         }
 
         .input-group {
@@ -56,115 +103,110 @@
         label {
             margin-bottom: 8px;
             font-size: 1.1em;
-            color: #cccccc;
+            color: #00ff66; /* Kolor tekstu zgodny z body */
+            text-shadow: 0 0 2px #00ff66; /* Delikatny cień */
         }
 
         select, input[type="number"] {
             padding: 10px;
             border-radius: 5px;
-            border: 1px solid #555;
-            background-color: #4a4f57;
-            color: #f0f0f0;
-            font-size: 1em;
-            width: calc(100% - 22px); /* Adjust for padding and border */
+            border: 2px solid #cc0000; /* Kolor ramki jak przyciski */
+            background-color: #000000; /* Tło jak nawigacja */
+            color: #00ff66; /* Kolor tekstu jak body */
+            font-size: 1.1em;
+            width: calc(100% - 24px); /* Adjust for padding and border */
             max-width: 200px;
             box-sizing: border-box;
             margin-bottom: 10px;
-        }
-
-        button {
-            background-color: #00ff66;
-            color: #402819;
-            padding: 12px 25px;
-            border: none;
-            border-radius: 5px;
-            font-size: 1.1em;
-            cursor: pointer;
-            transition: background-color 0.3s ease;
-        }
-
-        button:hover {
-            background-color: #4fa3d7;
+            font-family: 'VT323', monospace;
         }
 
         .results {
             margin-top: 30px;
-            border-top: 1px solid #555;
+            border-top: 1px solid #cc0000;
             padding-top: 20px;
             text-align: left;
         }
 
         .results h2 {
-            color: #00ff66;
+            color: #ff6600;
             margin-bottom: 15px;
+            text-shadow: 0 0 3px #ff0000;
         }
 
         .result-item {
-            background-color: #4a4f57;
+            background-color: #000000; /* Tło jak nawigacja */
             padding: 10px;
             border-radius: 5px;
             margin-bottom: 10px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            border: 1px solid #cc0000; /* Ramka */
         }
 
         .result-item span {
             font-size: 1.2em;
             font-weight: bold;
-            color: #f0f0f0;
+            color: #00ff66; /* Kolor tekstu */
         }
 
         .result-item .dice-type {
             font-size: 0.9em;
-            color: #ccc;
+            color: #ff6600; /* Kolor pasujący do nagłówków */
         }
 
-        footer {
-            margin-top: 40px;
-            font-size: 0.8em;
-            color: #aaa;
+        .result-item.total-result { /* Nowa klasa dla sumy */
+            background-color: #330000; /* Ciemniejszy odcień czerwieni */
+            border-color: #ff6600;
+            color: #00ff66;
+        }
+        .result-item.total-result span {
+            color: #00ff66;
         }
     </style>
 </head>
-<body>   
+<body>
     <nav>
-    <a href="index.html">Home</a>
-    <a href="main-quest.html">Main Quest</a>
-    <a href="side-quests.html">Side Quests</a>
-     <a href="diceroll.html">Rzut kośćmi</a>
-    <a href="characters.html">Characters</a>
-    <a href="sessions.html">Sessions</a>
-    <a href="submit-update.html">Submit Update</a>
-      </nav>
-    <div class="container">
-        <h1>Generator Kości D&D</h1>
+        <a href="index.html">Home</a>
+        <a href="main-quest.html">Main Quest</a>
+        <a href="side-quests.html">Side Quests</a>
+        <a href="diceroll.html">Rzut kośćmi</a>
+        <a href="characters.html">Characters</a>
+        <a href="sessions.html">Sessions</a>
+        <a href="submit-update.html">Submit Update</a>
+    </nav>
 
-        <div class="input-group">
-            <label for="diceType">Wybierz typ kości:</label>
-            <select id="diceType">
-                <option value="4">K4 (4-ścienna)</option>
-                <option value="6">K6 (6-ścienna)</option>
-                <option value="8">K8 (8-ścienna)</option>
-                <option value="10">K10 (10-ścienna)</option>
-                <option value="12">K12 (12-ścienna)</option>
-                <option value="20">K20 (20-ścienna)</option>
-                <option value="100">K100 (100-ścienna)</option>
-            </select>
+    <main>
+        <div class="container">
+            <h1>Generator Kości D&D</h1>
+
+            <div class="input-group">
+                <label for="diceType">Wybierz typ kości:</label>
+                <select id="diceType">
+                    <option value="4">K4 (4-ścienna)</option>
+                    <option value="6">K6 (6-ścienna)</option>
+                    <option value="8">K8 (8-ścienna)</option>
+                    <option value="10">K10 (10-ścienna)</option>
+                    <option value="12">K12 (12-ścienna)</option>
+                    <option value="20">K20 (20-ścienna)</option>
+                    <option value="100">K100 (100-ścienna)</option>
+                </select>
+            </div>
+
+            <div class="input-group">
+                <label for="numDice">Ile kości rzucić?</label>
+                <input type="number" id="numDice" value="1" min="1" max="10">
+            </div>
+
+            <button onclick="rollDice()">Rzuć kośćmi!</button>
+
+            <div class="results" id="results">
+                <h2>Wyniki rzutów:</h2>
+                <p>Tutaj pojawią się Twoje wyniki.</p>
+            </div>
         </div>
-
-        <div class="input-group">
-            <label for="numDice">Ile kości rzucić?</label>
-            <input type="number" id="numDice" value="1" min="1" max="10">
-        </div>
-
-        <button onclick="rollDice()">Rzuć kośćmi!</button>
-
-        <div class="results" id="results">
-            <h2>Wyniki rzutów:</h2>
-            <p>Tutaj pojawią się Twoje wyniki.</p>
-        </div>
-    </div>
+    </main>
 
     <footer>
         Stworzone dla graczy D&D
@@ -179,7 +221,7 @@
             resultsDiv.innerHTML = '<h2>Wyniki rzutów:</h2>'; // Clear previous results
 
             if (isNaN(diceType) || isNaN(numDice) || numDice < 1 || numDice > 10) {
-                resultsDiv.innerHTML += '<p style="color: #ff6347;">Proszę wybrać poprawny typ kości i liczbę kości (od 1 do 10).</p>';
+                resultsDiv.innerHTML += '<p style="color: #ff6600;">Proszę wybrać poprawny typ kości i liczbę kości (od 1 do 10).</p>';
                 return;
             }
 
@@ -202,9 +244,8 @@
 
             if (numDice > 1) {
                 const totalResultItem = document.createElement('div');
-                totalResultItem.classList.add('result-item');
+                totalResultItem.classList.add('result-item', 'total-result'); // Dodana klasa total-result
                 totalResultItem.style.marginTop = '15px';
-                totalResultItem.style.backgroundColor = '#5cb85c'; /* A different color for total */
                 totalResultItem.innerHTML = `
                     <span>Suma wszystkich rzutów: ${totalSum}</span>
                     <span class="dice-type"></span>
