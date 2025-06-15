@@ -3,127 +3,84 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Siedziba Drużyny D&D - Home</title>
+    <title>Siedziba Drużyny D&D</title>
     <link href="https://fonts.googleapis.com/css2?family=VT323&display=swap" rel="stylesheet">
     <style>
-        /* Globalne style dla tła, tekstu i czcionek - teraz bez obrazów */
         body {
-            background-color: #1a0f0f; /* Ciemny, prawie czarny kolor tła */
-            color: #00ff66; /* Jasnozielony, "terminalowy" kolor tekstu */
-            font-family: 'VT323', monospace; /* Czcionka o wyglądzie retro */
-            /* Usunięto wszelkie background-image, background-blend-mode */
-            padding: 0px;
+            background-color: #1a0f0f;
+            color: #00ff66;
+            font-family: 'VT323', monospace;
             margin: 0;
+            padding: 0;
+            min-height: 100vh;
             display: flex;
             flex-direction: column;
-            min-height: 100vh; /* Rozciągnij stronę na całą wysokość widoku */
-            /* Kursor jest nadal aktywny */
-            overflow-x: hidden; /* Zapobiegaj poziomemu przewijaniu */
         }
 
-        /* Usunięto pseudo-elementy body::before i body::after, bo nie używają już zdjęć */
-        /* Jeśli chcesz dodać subtelne, czyste animacje BEZ ZDJĘĆ, możesz to zrobić tutaj */
-
-        /* Styl dla czcionki VT323 - upewnienie się, że jest zastosowana */
-        .vt323-regular {
-            font-family: "VT323", monospace;
-            font-weight: 400;
-            font-style: normal;
+        nav {
+            background-color: #000;
+            padding: 15px;
+            text-align: center;
+            border-bottom: 2px solid #cc0000;
         }
 
+        nav a {
+            color: #00ff66;
+            text-decoration: none;
+            margin: 0 15px;
+            font-size: 24px;
+        }
 
+        nav a:hover {
+            color: #ff6600;
+        }
 
-        /* Główna sekcja strony */
         main {
             padding: 40px;
-            max-width: 900px; /* Nieco szerszy main */
-            margin: 20px auto; /* Większy margines */
-            flex-grow: 1; /* Pozwala na rozciągnięcie maina */
+            max-width: 800px;
+            margin: auto;
+            flex-grow: 1;
             text-align: center;
-            position: relative;
-            z-index: 1;
         }
 
-        /* Nagłówki */
         h1 {
-            color: #ff6600; /* Pomarańczowy */
-            text-shadow: 0 0 3px #ff0000; /* Delikatny, czerwony cień */
-            font-size: 5em; /* Ogromny, dominujący nagłówek */
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 4px;
-            /* Usunięto ramki i tło */
-            display: inline-block; /* Aby nagłówek nie zajmował całej szerokości */
+            color: #ff6600;
+            text-shadow: 0 0 3px #ff0000;
+            font-size: 3.5em;
+            margin-bottom: 30px;
         }
 
-        /* Przypis - umieszczony w centralnym bloku */
         .motto-container {
-            background-color: #000000; /* Całkowicie czarne tło */
-            border: 2px solid #cc0000; /* Czerwona ramka */
-            border-radius: 10px; /* Delikatne zaokrąglenie */
-            padding: 25px;
-            margin-top: 40px;
-            box-shadow: 0 0 10px rgba(255, 102, 0, 0.5); /* Pomarańczowy cień */
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            position: relative;
-            overflow: hidden;
+            background-color: #000;
+            padding: 30px;
+            border: 2px solid #cc0000;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(255, 102, 0, 0.5);
         }
 
         .motto {
-            color: #00ff66; /* Jasnozielony tekst */
-            font-size: 2.2em;
-            line-height: 1.5;
-            font-weight: bold;
-            text-shadow: 0 0 2px #00ff66; /* Delikatny zielony cień */
+            font-size: 2em;
             text-transform: uppercase;
-            position: relative;
-            z-index: 2;
-        }
-
-        /* Dodatkowy obszar na przyszłe elementy */
-        .future-content-area {
-            background-color: #000000; /* Całkowicie czarne tło */
-            border: 2px solid #00ff66; /* Zielona ramka */
-            padding: 25px;
-            margin-top: 50px;
-            border-radius: 10px;
-            color: #00ff66;
-            font-style: italic;
-            font-size: 1.3em;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 255, 102, 0.5); /* Zielony cień */
-        }
-        .future-content-area p {
-            margin-bottom: 15px;
+            font-weight: bold;
             text-shadow: 0 0 2px #00ff66;
         }
 
-        /* Stopka */
+        .future-content-area {
+            margin-top: 40px;
+            background-color: #000;
+            border: 2px solid #00ff66;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 1.3em;
+            box-shadow: 0 0 10px rgba(0, 255, 102, 0.5);
+        }
+
         footer {
             text-align: center;
-            color: #444; /* Ciemnoszary kolor */
+            color: #444;
             padding: 20px 0;
-            margin-top: auto;
-            /* Usunięto border-top */
-            background-color: #000000; /* Całkowicie czarne tło stopki */
-        }
-
-        /* Responsywność dla mniejszych ekranów */
-        @media (max-width: 768px) {
-            nav { font-size: 18px; padding: 1em 0; }
-            nav a { font-size: 20px; margin: 0 5px; }
-            h1 { font-size: 3em; letter-spacing: 2px; }
-            .motto-container { padding: 20px; margin-top: 30px; }
-            .motto { font-size: 1.6em; }
-            main { padding: 25px; }
-            .future-content-area { margin-top: 40px; padding: 20px; font-size: 1em; }
-        }
-
-        @media (max-width: 480px) {
-            h1 { font-size: 2.2em; letter-spacing: 1px; }
-            .motto { font-size: 1.2em; }
+            background-color: #000;
+            border-top: 2px solid #cc0000;
         }
     </style>
 </head>
@@ -135,25 +92,4 @@
         <a href="diceroll.html">Rzut kośćmi</a>
         <a href="characters.html">Characters</a>
         <a href="sessions.html">Sessions</a>
-        <a href="submit-update.html">Submit Update</a>
-        <a href="https://app.roll20.net/join/19037257/KOLSTA" target="_blank">Roll20</a>
-    </nav>
-
-    <main>
-        <h1>Witamy w Piekle Kampanii!</h1>
-
-        <div class="motto-container">
-            <p class="motto">Gdzie kastracja nie wystarczy, tam drużyna dzielna walczy. Kiedy los się świata waży, kutas w ustach sam się smaży. Dorośli ludzie.</p>
-        </div>
-
-        <div class="future-content-area">
-            <p>Rzucam na wiadomo co</p>
-            <p>17. Zdejmuj spodnie.</p>
-            </div>
-    </main>
-
-    <footer>
-        Stworzone dla graczy D&D i fanów sexrp przez Jakub69
-    </footer>
-</body>
-</html>
+        <a href="submit-update.html">Submit Update</a
